@@ -1,3 +1,5 @@
+import javax.annotation.processing.ProcessingEnvironment;
+
 public class ShoppingCartApp {
     public static void main(String[] args) {
         System.out.println("Welcome to shopping-cart.net!");
@@ -10,6 +12,17 @@ public class ShoppingCartApp {
 
         //EXERCISE ASSIGNMENT HERE
         //Create enums for order status and shipping status.
+        enum OrderStatus {
+            PENDING,
+            PROCESSING,
+            SHIPPED,
+            DELIVERED,
+        }
+        enum ShippingStatus {
+            STANDARD,
+            TWO_DAY,
+            OVERNIGHT
+        }
         // Here are the options as per decisions made by the team:
             //Order status: pending, processing, shipped, delivered
             // Shipping status: standard, 2-day, overnight

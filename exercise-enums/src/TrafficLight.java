@@ -6,13 +6,19 @@ public class TrafficLight {
         //RED
         //YELLOW
         //GREEN
+        enum Light {  // cannot use "TrafficLight" in class with same name
+            RED,
+            YELLOW,
+            GREEN
+        }
 
     //2. Store all values in an array using values().
-
+    Light[] lights = Light.values();
     //3. Retrieve the correct signal based on a predefined index (1 for YELLOW).
-
+        string arrayCurrentSignal = lights[1];
+        string currentSignal = Light.values()[1];
     //4. Print the selected signal.
-
-
+        System.out.println("The signal is currently: "+currentSignal);
+        System.out.println("The signal is currently: "+arrayCurrentSignal);
     }
 }
