@@ -16,4 +16,14 @@ public class Book {
     public void borrowBook() {
         this.isAvailable = false;
     }
+
+    public String displayStatus() {
+        if (this.isAvailable) {
+            return "Available";
+        }
+        else {
+            return "Unavailable";
+        }
+
+    }
 }
