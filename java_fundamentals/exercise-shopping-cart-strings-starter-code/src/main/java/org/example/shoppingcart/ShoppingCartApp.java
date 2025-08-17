@@ -6,6 +6,9 @@ package org.example.shoppingcart;
  */
 
 public class ShoppingCartApp {
+    public static String businessName = "Pennington Industries";
+    public static String contactEmail = "srsrec@gmail.com";
+
     enum OrderStatus {
         PENDING, PROCESSING, SHIPPED, DELIVERED
     }
@@ -15,8 +18,9 @@ public class ShoppingCartApp {
     }
 
     public static void main(String[] args) {
-        System.out.println("Welcome to the shopping cart app!");
+        System.out.println("Welcome to the " + businessName + " shopping cart app!");
 
+        String itemDescription = "P Widget";
         int productId = 1;
         int productCategory = 2;
         double productCost = 2.56;
