@@ -15,8 +15,8 @@ public class TrafficLight {
     //2. Store all values in an array using values().
     Light[] lights = Light.values();
     //3. Retrieve the correct signal based on a predefined index (1 for YELLOW).
-        string arrayCurrentSignal = lights[1];
-        string currentSignal = Light.values()[1];
+        Light arrayCurrentSignal = lights[1];
+        Light currentSignal = Light.values()[1];
     //4. Print the selected signal.
         System.out.println("The signal is currently: "+currentSignal);
         System.out.println("The signal is currently: "+arrayCurrentSignal);
