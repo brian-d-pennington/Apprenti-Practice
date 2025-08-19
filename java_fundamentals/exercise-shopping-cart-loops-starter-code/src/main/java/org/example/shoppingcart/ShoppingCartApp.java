@@ -6,15 +6,15 @@ public class ShoppingCartApp {
   public static void main(String[] args) {
     Scanner console = new java.util.Scanner(System.in);
 
+      boolean confirm = false;
+      String taxExempt = "";
+      String shipping = "";
+      String promoCode = "";
+      int orderQuantity = 0;
+
     System.out.println("Welcome to the shopping cart app!");
 
-    boolean confirm = false;
-
-    String taxExempt = "";
-    String shipping = "";
-    String promoCode = "";
-    int orderQuantity = 0;
-
+while (!confirm) {
     // Prompt for tax exempt
     System.out.println("Are you tax-exempt? (y/n)");
     taxExempt = console.nextLine();
@@ -30,6 +30,12 @@ public class ShoppingCartApp {
     // Prompt for promo code
     System.out.println("Promo code for free shipping?");
     promoCode = console.nextLine();
+
+    if (console.nextLine().equalsIgnoreCase("y")) {
+        confirm = true;
+    }
+
+}
 
     // Print details
     System.out.println("\nDetails:");
