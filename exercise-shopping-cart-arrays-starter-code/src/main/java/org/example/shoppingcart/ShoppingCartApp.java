@@ -21,11 +21,33 @@ public class ShoppingCartApp {
     sizes[2] = "large";
 
     // Prompt for shipping address
-    for (String address : addresses) {
-        System.out.println(address);
-    }
+      System.out.println("Choose which saved address to use: ");
+      for (int i = 1; i < addresses.length; i++) {
+          System.out.println(i+ ". "+ addresses[i]);
+      }
+      int shippingInput = Integer.parseInt(console.nextLine());
+      System.out.println("You chose "+addresses[shippingInput]);
+      System.out.println("-------------------------------");
     // Prompt for Size
-
+      System.out.println("What size would you like?");
+      for (int i = 0; i < sizes.length; i++) {
+          System.out.println(i+1+ ". "+ sizes[i]);
+      }
+      while (true) { // size validator loop
+          String size = console.nextLine();
+          Boolean valid = false;
+          for (String validSize: sizes) {
+              if (validSize.equalsIgnoreCase(size)){
+                  valid = true;
+              }
+          }
+          if (valid) {
+              System.out.println("You ordered a "+size);
+              break;
+          } else {
+              System.out.println("Please re-enter size: ");
+          }
+      }
     // Print details
     System.out.println("\nDetails:");
 
