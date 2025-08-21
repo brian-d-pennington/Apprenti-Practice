@@ -2,70 +2,80 @@ package org.example;
 
 import java.util.Scanner;
 
-public class UserRegistration {
+public class ExceptionHandling {
 
     public static void main(String[] args) {
+        // variables
         Scanner scanner = new Scanner(System.in);
-        int age = 0;
         String email = "";
+        String errMsg = "";
         int pin = 0;
-
-        // Handling age input
+        int age = 0;
+        // user inputs
         while (true) {
             try {
                 System.out.print("Enter your age: ");
                 age = Integer.parseInt(scanner.nextLine());
                 if (age <= 0) {
-                    throw new IllegalArgumentException("Age must be greater than 0.");
+                    throw new IllegalArgumentException("Input cannot be 0!");
                 }
-                break; // Exit loop if input is valid
+                break;
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid integer for age.");
+                System.out.println("Invalid input. Please enter a number");
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                System.out.println(e.getMessage()); // NumberFormatException
             }
         }
 
-        // Handling email input
         while (true) {
             try {
                 System.out.print("Enter your email: ");
                 email = scanner.nextLine();
+
                 if (email == null || email.trim().isEmpty()) {
-                    throw new IllegalArgumentException("Email cannot be empty.");
+                    errMsg += "Email cannot be empty";
+                }
+                if (!email.contains("@")){
+                    errMsg += "\nAddress must contain @";
+                }
+                if (!email.contains(".")){
+                    errMsg += "\nAddress must contain .";
+                }
+                if (!errMsg.isEmpty()) {
+                    throw new IllegalArgumentException(errMsg);
+                }
+                if (!email.matches("^(.+)@(\\S+)$")){
+                    errMsg = "Email Cannot be blank. Email must Have @ and . contained in the input";
+                    throw new IllegalArgumentException(errMsg);
                 }
                 break;
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException e){
                 System.out.println(e.getMessage());
             }
+
         }
 
-        // Handling PIN input
         while (true) {
             try {
                 System.out.print("Enter your 4-digit PIN: ");
                 String pinInput = scanner.nextLine();
-
-                if (!pinInput.matches("\\d{4}")) {  // Ensures exactly 4 digits
-                    throw new IllegalArgumentException("PIN must be exactly 4 digits.");
+                if (!pinInput.matches("\\d{4}")) {
+                    throw new IllegalArgumentException("Must be a 4 digit number.");
                 }
-
-                pin = Integer.parseInt(pinInput); // Convert string PIN to integer
+                pin = Integer.parseInt(scanner.nextLine());
                 break;
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
+
         }
 
-        // Successful registration message
+
+
         System.out.println("\nRegistration Successful!");
+        // print details
         System.out.println("Age: " + age);
         System.out.println("Email: " + email);
         System.out.println("PIN: " + pin);
-
-        // Finally block message
-        System.out.println("\nRegistration Attempt Complete!");
-
-        scanner.close(); // Closing the scanner to prevent resource leaks
     }
 }
