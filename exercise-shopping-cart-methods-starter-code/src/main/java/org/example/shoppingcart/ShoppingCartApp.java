@@ -13,7 +13,7 @@ package org.example.shoppingcart;
  * learn more about Object-Oriented Programming and some additional data
  * structures.
  */
-
+// METHODS AT THE BOTTOM ************
 public class ShoppingCartApp {
 
   public static void main(String[] args) {
@@ -61,6 +61,9 @@ public class ShoppingCartApp {
       System.out.println("Promo code for free shipping?");
       promoCode = console.nextLine();
 
+      // called Methods
+        displayChoices(addresses);
+        displayChoices(sizes);
       // Print details
       System.out.println("\nDetails:");
       System.out.println("Tax-exempt: " + taxExempt);
@@ -75,4 +78,12 @@ public class ShoppingCartApp {
 
     System.out.println("Bye");
   }
+  // Methods
+    private static void displayChoices(String[] choices) {
+        for (int i = 0; i < choices.length; i++) {
+            System.out.println(i + 1 + ": " + choices[i]);
+        }
+    }
 }
+
+
