@@ -19,7 +19,8 @@ public class ShoppingCartApp {
         System.out.println("Do you need shipping? Y/N");
         shipping = console.nextLine();
         System.out.println("How many widgets would you like to order?");
-        orderQuantity = Integer.parse(console.nextLine());
+        //orderQuantity = Integer.parse(console.nextLine());
+        orderQuantity = Integer.parseInt(console.nextLine());
         System.out.println("Enter promo code: ");
         promoCode = console.nextLine();
         // Print details
