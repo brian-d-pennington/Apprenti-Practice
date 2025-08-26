@@ -7,10 +7,10 @@ public class Locker {
     private String lockerId;
     private boolean isOccupied;
     private String contents;
-    private int random = (int)(Math.random() * 1) + 10;
+
     // constructor
     public Locker(String lockerId) {
-        this.lockerId = Double.toString(random);
+        this.lockerId = lockerId;
         this.isOccupied = false;
         this.contents = "";
     }
@@ -53,11 +53,17 @@ public class Locker {
 
     public String toString() {
         String occupiedMessage;
+        String contentMessage;
         if (isOccupied) {
             occupiedMessage = "is occupied";
         } else {
             occupiedMessage = "is free";
         }
-        return "Locker " + this.lockerId + " " + occupiedMessage + " and contains " + this.contents;
+        if (this.contents.isEmpty()) {
+            contentMessage = "doesn't contain anything";
+        } else {
+            contentMessage = " contains " + this.contents;
+        }
+        return "Locker " + this.lockerId + " " + occupiedMessage + " and " + contentMessage;
     }
 }
