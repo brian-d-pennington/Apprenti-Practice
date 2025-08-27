@@ -37,8 +37,12 @@ public class LockerManager {
     }
 
     public void displayAllLockers() {
-        for (Locker locker : lockers ) {
-            System.out.println(locker.toString());
+        if (lockers.isEmpty()) {
+            System.out.println("No lockers to display");
+        } else {
+            for (Locker locker : lockers ) {
+                System.out.println(locker.toString());
+            }
         }
     }
 }
