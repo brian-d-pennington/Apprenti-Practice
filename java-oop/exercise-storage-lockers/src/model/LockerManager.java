@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class LockerManager {
-    public ArrayList<Locker> lockers;
+    private ArrayList<Locker> lockers;
 
     // constructor
     public LockerManager() {
@@ -16,7 +16,7 @@ public class LockerManager {
     }
 
     public Locker getLocker(String lockerId) {
-        for (int i = 0; i < lockers.size(); i++) {
+        for (int i = 0; i < lockers.size(); i++) { // for each would be better
             if (lockerId.equals(lockers.get(i).getLockerId())) {
                 return lockers.get(i);
             }
@@ -33,6 +33,12 @@ public class LockerManager {
             } else {
                 System.out.println("Locker by id " + lockerId + " could not be found to be deleted");
             }
+        }
+    }
+
+    public void displayAllLockers() {
+        for (Locker locker : lockers ) {
+            System.out.println(locker.toString());
         }
     }
 }

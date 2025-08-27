@@ -10,11 +10,11 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
-        LockerManager manager = new LockerManager();
+        LockerManager manager = new LockerManager(); // instantiates Locker Manager
 
         System.out.println("Welcome to the Locker Management System!");
 
-        while (true) {
+        while (true) { // main menu
             System.out.println("Enter a number to choose one of the following:");
             for (int i = 0; i < menuOptions.length; i++) {
                 System.out.println(i+1 + ": " + menuOptions[i]);
@@ -53,11 +53,11 @@ public class Main {
                     String lockerContents = manager.getLocker(idToRetrieve).getContents();
                     System.out.println(lockerContents + " retrieved.");
                     break;
-                case 5:
-
+                case 5: // display all lockers
+                    manager.displayAllLockers();
                     break;
                 case 6:
-
+                    System.out.println("Thank you for using the Locker Management System. Goodbye.");
                     break;
 
                 default:
@@ -66,10 +66,3 @@ public class Main {
         }
     }
 }
-
-//○ Add a locker
-//○ Remove a locker
-//○ Store an item in a locker
-//○ Retrieve an item from a locker
-//○ Display all lockers
-//○ Exit the program
