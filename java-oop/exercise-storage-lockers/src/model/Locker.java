@@ -20,25 +20,10 @@ public class Locker {
         return lockerId;
     }
 
-    public void setLockerId(String lockerId) {
-        this.lockerId = lockerId;
-    }
-
-    public boolean isOccupied() {
-        return isOccupied;
-    }
-
-    public void setOccupied(boolean occupied) {
-        isOccupied = occupied;
-    }
-
     public String getContents() {
         return contents;
     }
 
-    public void setContents(String contents) {
-        this.contents = contents;
-    }
     // methods
 
     public void storeItem(String item) {
@@ -51,6 +36,7 @@ public class Locker {
         this.contents = "";
     }
 
+    @Override
     public String toString() {
         String occupiedMessage;
         String contentMessage;
@@ -62,7 +48,7 @@ public class Locker {
         if (this.contents.isEmpty()) {
             contentMessage = "doesn't contain anything";
         } else {
-            contentMessage = " contains " + this.contents;
+            contentMessage = "contains " + this.contents;
         }
         return "Locker " + this.lockerId + " " + occupiedMessage + " and " + contentMessage;
     }
