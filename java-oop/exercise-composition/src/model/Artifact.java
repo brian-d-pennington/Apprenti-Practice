@@ -40,6 +40,25 @@ public class Artifact {
         return yearOfDiscovery;
     }
 
+    // setters
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDiscoverer(Person discoverer) {
+        this.discoverer = discoverer;
+    }
+
+    public void setCurator(Person curator) {
+        this.curator = curator;
+    }
+
+    public void setYearOfDiscovery(int yearOfDiscovery) {
+        this.yearOfDiscovery = yearOfDiscovery;
+    }
+
     // methods
     @Override
     public String toString() {
