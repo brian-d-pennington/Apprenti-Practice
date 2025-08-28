@@ -13,19 +13,6 @@ public class Person {
         this.primarySpecialty = primarySpecialty;
     }
 
-    // getters
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getPrimarySpecialty() {
-        return primarySpecialty;
-    }
-
     // setters
     public void setFirstName(String firstName) {
         this.firstName = firstName;
