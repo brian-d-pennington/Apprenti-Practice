@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Main {
     public static Scanner console = new Scanner(System.in);
     public static Person person;
+    public static Person personCurator;
     public static Artifact artifact;
 
     // input variables
@@ -18,6 +19,9 @@ public class Main {
     public static String lastNameInput;
     public static String primarySpecialtyInput;
     public static String discovererAlsoCurator;
+    public static String curatorFirstNameInput;
+    public static String curatorLastNameInput;
+    public static String curatorSpecialtyInput;
 
     public static void main(String[] args) {
         System.out.println("Please enter the name of a new artifact: ");
@@ -60,6 +64,12 @@ public class Main {
                 break;
             } else if (discovererAlsoCurator.equalsIgnoreCase("n")) {
                 isCurator = false;
+                System.out.println("Please enter the name and specialty of the curator. Enter first name:");
+                curatorFirstNameInput = console.nextLine();
+                System.out.println("Last name:");
+                curatorLastNameInput = console.nextLine();
+                System.out.println("Curator specialty: ");
+                curatorSpecialtyInput = console.nextLine();
                 break;
             } else {
                 System.out.println("Please enter Y or N only");
@@ -71,12 +81,13 @@ public class Main {
             artifact = new Artifact(artifactInput,person, person, yearInput);
         } else {
             artifact = new Artifact(artifactInput,person, primarySpecialtyInput, yearInput);
+            personCurator = new Person(curatorFirstNameInput, curatorLastNameInput, curatorSpecialtyInput);
         }
 
         System.out.println("------------Report--------------");
-        System.out.println(artifact.toString());
-        System.out.println("Discoverer: " + person.toString());
-        System.out.println("Curator: " + artifact.getCurator());
+        System.out.println("Artifact: " + artifact.toString());
+        System.out.println("Discoverer: " + artifact.getDiscoverer());
+        System.out.println("Curator: " + personCurator.toString());
     }
 }
 

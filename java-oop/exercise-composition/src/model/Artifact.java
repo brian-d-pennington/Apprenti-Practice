@@ -33,11 +33,7 @@ public class Artifact {
     }
 
     public Person getCurator() {
-        if (this.curator == null) {
-            return discoverer;
-        } else {
-            return curator;
-        }
+        return curator;
     }
 
     public int getYearOfDiscovery() {
@@ -47,6 +43,6 @@ public class Artifact {
     // methods
     @Override
     public String toString() {
-        return "Artifact: " + this.name + " (" + yearOfDiscovery + ")";
+        return this.name + " (" + yearOfDiscovery + ")";
     }
 }
