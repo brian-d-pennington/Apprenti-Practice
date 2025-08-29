@@ -38,10 +38,10 @@ public class App {
 
         //Uncomment this section after implementing GiftCardPayment to verify that balances are correct after processing
 //        //Post processing gift card balance check
-//        for (Payment p : payments) {
-//            if (p instanceof GiftCardPayment) {
-//                System.out.println(p.toString());
-//            }
-//        }
+        for (Payment p : payments) {
+            if (p instanceof GiftCard) {
+                System.out.println(p.toString());
+            }
+        }
     }
 }
