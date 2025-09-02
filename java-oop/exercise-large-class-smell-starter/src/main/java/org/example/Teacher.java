@@ -1,18 +1,10 @@
 package org.example;
 
-public class Student {
+public class Teacher {
     private String firstName;
     private String lastName;
 
-    // getters and setters
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
+    // getter and setter
     public String getFirstName() {
         return firstName;
     }
@@ -21,4 +13,11 @@ public class Student {
         this.firstName = firstName;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 }
