@@ -11,6 +11,7 @@ class ShoppingCartTest {
     Item testItem1;
     Item testItem2;
     Item testItem3;
+    double itemsTotal;
 
     @BeforeEach
     public void setup() {
@@ -35,14 +36,53 @@ class ShoppingCartTest {
     }
 
     @Test
-    void checkoutShoppingCart() {
-        double taxRate = .10;
-        double discount = .30;
-        double expected = 47.74;
+    void checkoutShoppingCart() { // refactored cart just gets the item total
+        double expected = 62.00;
         double precision = .001;
         // Because binary math and decimal math don't always work out precisely the same
         // assertEquals for floating point numbers allows a third parameter for specifying
         // "close enough".  In this case, .001 means we will be accurate to a tenth of a cent.
-        assertEquals(expected, testCart.checkoutShoppingCart(testItems, taxRate, discount), precision);
+        itemsTotal = testCart.checkoutShoppingCart(testItems);
+        assertEquals(expected, itemsTotal, precision);
+    }
+
+    // test apply discount
+    @Test
+    void applyDiscount() {
+        Discount discount = new Discount();
+        discount.setDiscountCode(.30);
+        double expected = 43.40;
+        double precision = .001;
+        itemsTotal = testCart.checkoutShoppingCart(testItems);
+        double output = discount.applyDiscount(itemsTotal, discount.getDiscountCode());
+        assertEquals(expected, output, precision);
+    }
+
+    // test apply tax
+    @Test
+    void applyTaxRate() {
+        Tax tax = new Tax();
+        tax.setTaxRate(.07);
+        double expected = 66.34;
+        double precision = .001;
+        itemsTotal = testCart.checkoutShoppingCart(testItems);
+        double output = tax.applyTaxRate(itemsTotal, tax.getTaxRate());
+        assertEquals(expected, output, precision);
+    }
+
+    // a "unit test" that applies discount and taxes
+    @Test
+    void discountShoppingCartScenario() {
+        Discount discount = new Discount();
+        Tax tax = new Tax();
+        discount.setDiscountCode(.50);
+        tax.setTaxRate(.12); // Chicago sales tax :(
+        double expected = 34.72;
+        double precision = .001;
+
+        itemsTotal = testCart.checkoutShoppingCart(testItems);
+        double discountTotal = discount.applyDiscount(itemsTotal, discount.getDiscountCode());
+        double output = tax.applyTaxRate(discountTotal, tax.getTaxRate());
+        assertEquals(expected, output, precision);
     }
 }
