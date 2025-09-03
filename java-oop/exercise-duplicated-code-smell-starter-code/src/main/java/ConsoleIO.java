@@ -18,7 +18,11 @@ public class ConsoleIO {
 
     public String getInput(String prompt) {
         System.out.println(prompt);
-        return myScanner.nextLine();
+        String input = myScanner.nextLine();
+        if (input == null || input.length() == 0) {
+            input = "No input entered.";
+        }
+        return input;
     }
 
     public String getNonNullNonEmptyString (String prompt) {
