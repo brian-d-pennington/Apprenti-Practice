@@ -12,12 +12,7 @@ public class GuessingGame {
 
         name = myIO.getInput("What is your name?");
 
-        if (name == null || name.length() == 0) {
-            myIO.writeMessage("It's okay if you don't want to tell me your name.");
-            name = "Nobody";
-        }
-
-        favoriteColor = myIO.getInput("What's your favorite color?");
+        favoriteColor = myIO.getNonNullNonEmptyString("What's your favorite color?");
 
         favoriteNumber = myIO.getInteger("What's your favorite number?");
 
@@ -30,13 +25,13 @@ public class GuessingGame {
 
         favoriteAnimal = myIO.getNonNullNonEmptyString("What is your favorite animal?");
 
-        cash = myIO.getMoney();
+        cash = myIO.getPositiveMoney();
 
         myIO.writeMessage("Thanks for playing my game!");
         myIO.writeMessage("Your name is: " + name);
         myIO.writeMessage("Your favorite color is: " + favoriteColor);
         myIO.writeMessage("Your favorite animal is: " + favoriteAnimal);
-        myIO.writeMessage("Your cash on hand is :" + cash);
+        myIO.writeMessage("Your cash on hand is :$" + cash);
         myIO.writeMessage("Finally my guess at your bank pin is :" + favoriteNumber);
 
 
