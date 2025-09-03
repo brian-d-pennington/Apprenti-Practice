@@ -3,7 +3,7 @@ package org.example;
 import java.util.List;
 
 public class OrderManager {
-    public double orderTotal(List<Item> items, double taxRate, double discountRate) {
+    public double orderTotal() {
         double orderSum = 0.0;
 
         for (Item i: items
