@@ -15,7 +15,7 @@ public class CodeAlong {
         }
 
         for (Friend friend : birthday.getMap().keySet()) {
-            
+
         }
     }
 }
