@@ -6,6 +6,7 @@ import java.util.List;
 
 public class BirthdayManager {
 
+
     private HashMap<Friend, List<Gift>> myFriendsGifts;
 
     public BirthdayManager() {
