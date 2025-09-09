@@ -59,13 +59,13 @@ public class Main {
 
         }
 
-        for (String card : deckOfCards.keySet()) {
-            for (int i = 0; i < 13; i++) {
-                System.out.println(cardType.get(i) + " of " + card);
+        for (Map.Entry<String, List<String>> entry : deckOfCards.entrySet()) {
+            String suit = entry.getKey();
+            List<String> cards = entry.getValue();
+
+            for (String card : cards) {
+                System.out.println(card + " of " + suit);
             }
-
         }
-
-
     }
 }
