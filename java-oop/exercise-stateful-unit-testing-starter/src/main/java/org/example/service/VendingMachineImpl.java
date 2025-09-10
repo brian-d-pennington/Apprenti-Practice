@@ -31,20 +31,21 @@ public class VendingMachineImpl implements VendingMachine {
 
     @Override
     public int getBinQuantity(String binId) {
-        return bins.get(binId).size();
+        return bins.get(binId).size() -1;
     }
 
     @Override
     public Payload<Product> vend(String binId) {
         Payload<Product> result = new Payload<>();
         List<Product> bin = bins.get(binId);
+
         if (bin == null) {
             result.setErrorMessage("Invalid bin ID");
             result.setSuccess(false);
             return result;
         }
 
-        if (bin.isEmpty()) {
+        if (bin.size() <=1) {
             result.setErrorMessage("Bin is empty");
             result.setSuccess(false);
             return result;
@@ -60,7 +61,7 @@ public class VendingMachineImpl implements VendingMachine {
 
         bin.remove(1);
         customerMoney -= product.getPrice();
-
+        moneyBin += product.getPrice(); // missing from original program
         result.setPayload(product);
         result.setSuccess(true);
         result.setErrorMessage("");
@@ -82,7 +83,7 @@ public class VendingMachineImpl implements VendingMachine {
     public void loadProduct(String binId, Product product, int quantity) {
         List<Product> products = new ArrayList<>();
         product.setBinId(binId);
-        for (int i = 1; i < quantity; i++) {
+        for (int i = 0; i <= quantity; i++) { // was adding too few items to bin
             products.add(Product.clone(product));
         }
 
