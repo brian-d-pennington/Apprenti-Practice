@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.model.Printer;
+import org.example.service.PrinterManager;
 import org.example.service.PrinterMonitor;
 import org.example.view.ConsoleIO;
 
@@ -13,8 +14,9 @@ public class App
     public static void main( String[] args )
     {
         ConsoleIO io = ConsoleIO.getInstance();
-        Printer myPrinter = new Printer("My Cool 3D Printer");
-        PrinterMonitor monitor = new PrinterMonitor(myPrinter);
+//        Printer myPrinter = new Printer("My Cool 3D Printer");
+//        PrinterMonitor monitor = new PrinterMonitor(myPrinter);
+        PrinterManager printerManager = new PrinterManager();
 
         boolean running = true;
 
@@ -49,6 +51,7 @@ public class App
                     }
                     break;
                 case "X":
+                    printerManager.haltMonitors();
                     running = false;
                     break;
             }
