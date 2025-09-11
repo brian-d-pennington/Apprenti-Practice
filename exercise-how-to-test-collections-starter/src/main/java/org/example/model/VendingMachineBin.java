@@ -19,8 +19,8 @@ public class VendingMachineBin {
     }
 
     public Product vendProduct() {
-        Product result = products.get(1);
-        products.remove(1);
+        Product result = products.get(0);
+        products.remove(0);
 
         return result;
     }
