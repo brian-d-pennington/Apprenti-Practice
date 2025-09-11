@@ -10,7 +10,6 @@ public class Printer {
 
     private String name;
     private PrinterStatus status;
-    private String printModelName;
     public static final int cyclesPerWarmup = 1;
     public static final int cyclesPerPrint = 2;
 
@@ -26,19 +25,10 @@ public class Printer {
         this.status = status;
     }
 
-    public String getPrintModelName() {
-        return printModelName;
-    }
-
-    public void print(String printModelName) {
-        this.printModelName = printModelName;
+    public void print(String name) {
+        this.name = name;
         this.status = PrinterStatus.WARMING_UP;
-        System.out.println(toString() + " - Printing " + printModelName);
-    }
-
-    public void clearBed() {
-        printModelName = null;
-        status = PrinterStatus.READY;
+        System.out.println(toString() + " - Printing " + name);
     }
 
     public String getName() {
