@@ -18,6 +18,42 @@ public class EncounterFileRepository implements EncounterRepository {
         this.filePath = filePath;
     }
 
+    // ADDED METHODS: findByType and update
+    @Override
+    public List<Encounter> findByType(String type) throws DataAccessException{
+        List<Encounter> encounters = findAll();
+        List<Encounter> encountersByType = new ArrayList<>();
+        for(Encounter encounter: encounters){
+            if(encounter.getType().equals(type)){
+                encountersByType.add(encounter);
+            }
+        }
+        if (encountersByType.isEmpty()) {
+            return null;
+        } else {
+            return encountersByType;
+        }
+    }
+
+    @Override
+    public boolean update(Encounter encounter) throws DataAccessException{
+        List<Encounter> all = findAll();
+        try (PrintWriter writer = new PrintWriter(filePath)) {
+            for (Encounter e : all) {
+                if (e.getEncounterId() == encounter.getEncounterId()) {
+                    all.set(e.getEncounterId(), encounter);
+                    writer.println("File updated");
+                    return true;
+                } else {
+                    System.out.println("Encounter does not exist");
+                }
+            }
+        } catch (IOException e){
+            throw new DataAccessException("Could not update file", e);
+        }
+        return false;
+    }
+
     @Override
     public List<Encounter> findAll() throws DataAccessException {
 

@@ -5,6 +5,8 @@ import learn.unexplained.models.EncounterType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,6 +22,20 @@ class EncounterFileRepositoryTest {
 
     EncounterRepository repository = new EncounterFileRepository(TEST_PATH);
 
+//    ● Test the new methods:
+//            ○ Test findByType and update. Ensure that update is tested for both
+//    successful and unsuccessful scenarios.
+//            ● Add missing tests:
+//            ○ The deleteById method should be explicitly tested with both positive
+//            (encounter found) and negative (encounter not found) cases.
+//● Improve setup:
+//            ○ Currently, the test setup method uses multiple repository methods to
+//    establish a known good state. This can lead to unclear test results if
+//    issues arise. Instead, use a data "seed" file containing all necessary test
+//    data. Copy this seed data into a test data file before each test. This
+//    ensures that the test data remains consistent and accurate, isolating
+//    issues more effectively
+
     @BeforeEach
     void setup() throws DataAccessException {
         for (Encounter e : repository.findAll()) {
@@ -30,7 +46,12 @@ class EncounterFileRepositoryTest {
             repository.add(e);
         }
     }
-
+    // New Test for added methods
+    @Test
+    void testFindByType() throws DataAccessException {
+        Encounter[] expected = Arrays.stream(testEncounters).sequential()
+        List<Encounter> actual = repository.findByType("CREATURE");
+    }
     @Test
     void shouldFindAll() throws DataAccessException {
         List<Encounter> encounters = repository.findAll();
