@@ -24,7 +24,7 @@ public class EncounterFileRepository implements EncounterRepository {
         List<Encounter> encounters = findAll();
         List<Encounter> encountersByType = new ArrayList<>();
         for(Encounter encounter: encounters){
-            if(encounter.getType().equals(type)){
+            if(encounter.getType().toString().equals(type)){
                 encountersByType.add(encounter);
             }
         }
@@ -45,7 +45,7 @@ public class EncounterFileRepository implements EncounterRepository {
                     writer.println("File updated");
                     return true;
                 } else {
-                    System.out.println("Encounter does not exist");
+                    writer.println("Encounter does not exist");
                 }
             }
         } catch (IOException e){
