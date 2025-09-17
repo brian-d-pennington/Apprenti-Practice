@@ -27,13 +27,13 @@ public class FileIODemo {
         }
 
 //        //Step 2: Write Colors to the file
-//        try (PrintWriter writer = new PrintWriter(file)) {
-//            writer.println("red");
-//            writer.println("blue");
-//            writer.println("green");
-//        } catch (FileNotFoundException e){
-//            e.printStackTrace();
-//        }
+        try (PrintWriter writer = new PrintWriter(file)) {
+            writer.println("red");
+            writer.println("blue");
+            writer.println("green");
+        } catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
 
         //Step 3: Append to a file
         try (FileWriter fileWriter = new FileWriter("colors.txt", true);
