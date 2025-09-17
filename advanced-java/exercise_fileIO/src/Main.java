@@ -54,9 +54,9 @@ public class Main {
         // delete file
         boolean success = file.delete();
         if (success) {
-            System.out.println("Colors File was deleted.");
+            System.out.println("Student Data file was deleted.");
         } else {
-            System.out.println("Unable to delete colors file");
+            System.out.println("Unable to delete Student Data file");
         }
     }
 }
