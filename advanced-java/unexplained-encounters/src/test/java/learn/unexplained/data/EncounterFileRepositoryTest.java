@@ -22,12 +22,6 @@ class EncounterFileRepositoryTest {
 
     EncounterRepository repository = new EncounterFileRepository(TEST_PATH);
 
-//    ● Test the new methods:
-//            ○ Test findByType and update. Ensure that update is tested for both
-//    successful and unsuccessful scenarios.
-//            ● Add missing tests:
-//            ○ The deleteById method should be explicitly tested with both positive
-//            (encounter found) and negative (encounter not found) cases.
 //● Improve setup:
 //            ○ Currently, the test setup method uses multiple repository methods to
 //    establish a known good state. This can lead to unclear test results if
@@ -49,9 +43,44 @@ class EncounterFileRepositoryTest {
     // New Test for added methods
     @Test
     void testFindByType() throws DataAccessException {
-        Encounter[] expected = Arrays.stream(testEncounters).sequential()
+        List<Encounter> expected = new ArrayList<>();
+        expected.add(testEncounters[1]);
         List<Encounter> actual = repository.findByType("CREATURE");
+        assertEquals(expected, actual);
     }
+
+    @Test
+    void testUpdateSuccessful() throws DataAccessException {
+        // new Encounter has updated description text
+        Encounter testUpdatedEncounter = new Encounter(1, EncounterType.UFO, "2020-01-01", "UPDATED DESCRIPTION TEST", 1);
+        boolean expected = true;
+        boolean actual = repository.update(testUpdatedEncounter);
+        assertEquals(expected, actual);
+    }
+
+//    @Test
+//    void testDeleteByIdSuccessful() throws DataAccessException {
+//        boolean expected = true;
+//        boolean actual = repository.deleteById(3);
+//        assertEquals(expected, actual);
+//    }
+
+    @Test
+    void testDeleteByIdUnsuccessful() throws DataAccessException {
+        boolean expected = false;
+        boolean actual = repository.deleteById(7); // id doesn't exist, should return false
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testUpdateUnsuccessful() throws DataAccessException {
+        // Encounter not included in the list will be passed, should return false
+        Encounter testNonExistentEntryUpdate = new Encounter(5, EncounterType.UFO, "2020-01-01", "UPDATED DESCRIPTION TEST", 1);
+        boolean expected = false;
+        boolean actual = repository.update(testNonExistentEntryUpdate);
+        assertEquals(expected, actual);
+    }
+
     @Test
     void shouldFindAll() throws DataAccessException {
         List<Encounter> encounters = repository.findAll();
