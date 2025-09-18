@@ -5,6 +5,11 @@ import learn.unexplained.models.EncounterType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,26 +17,27 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EncounterFileRepositoryTest {
-
+    static final String SEED_FILE_PATH = "./data/encounters-seed.csv";
     static final String TEST_PATH = "./data/encounters-test.csv";
-    final Encounter[] testEncounters = new Encounter[]{
-            new Encounter(1, EncounterType.UFO, "2020-01-01", "short test #1", 1),
-            new Encounter(2, EncounterType.CREATURE, "2020-02-01", "short test #2", 1),
-            new Encounter(3, EncounterType.SOUND, "2020-03-01", "short test #3", 1)
-    };
 
-    EncounterRepository repository = new EncounterFileRepository(TEST_PATH);
+    Encounter[] testEncounters = new Encounter[3];
 
-//● Improve setup:
-//            ○ Currently, the test setup method uses multiple repository methods to
-//    establish a known good state. This can lead to unclear test results if
-//    issues arise. Instead, use a data "seed" file containing all necessary test
-//    data. Copy this seed data into a test data file before each test. This
-//    ensures that the test data remains consistent and accurate, isolating
-//    issues more effectively
+    EncounterRepository repository;
 
     @BeforeEach
-    void setup() throws DataAccessException {
+    void setup() throws DataAccessException, IOException {
+        // added seed file
+        Path seedPath = Paths.get(SEED_FILE_PATH);
+        Path testPath = Paths.get(TEST_PATH);
+        Files.copy(seedPath, testPath, StandardCopyOption.REPLACE_EXISTING);
+
+        repository = new EncounterFileRepository(TEST_PATH);
+        testEncounters = new Encounter[]{
+                new Encounter(1, EncounterType.UFO, "2020-01-01", "short test #1", 1),
+                new Encounter(2, EncounterType.CREATURE, "2020-02-01", "short test #2", 1),
+                new Encounter(3, EncounterType.SOUND, "2020-03-01", "short test #3", 1)
+        };
+
         for (Encounter e : repository.findAll()) {
             repository.deleteById(e.getEncounterId());
         }
@@ -58,12 +64,12 @@ class EncounterFileRepositoryTest {
         assertEquals(expected, actual);
     }
 
-//    @Test
-//    void testDeleteByIdSuccessful() throws DataAccessException {
-//        boolean expected = true;
-//        boolean actual = repository.deleteById(3);
-//        assertEquals(expected, actual);
-//    }
+    @Test
+    void testDeleteByIdSuccessful() throws DataAccessException {
+        boolean expected = true;
+        boolean actual = repository.deleteById(3);
+        assertEquals(expected, actual);
+    }
 
     @Test
     void testDeleteByIdUnsuccessful() throws DataAccessException {
