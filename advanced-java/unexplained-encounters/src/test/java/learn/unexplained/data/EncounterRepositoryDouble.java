@@ -18,9 +18,9 @@ public class EncounterRepositoryDouble implements EncounterRepository {
 
     @Override
     public boolean deleteById(int encounterId) throws DataAccessException {
-        Encounter encounter = new Encounter(); // RESUME HERE
-        encounter.getEncounterId();
-        return encounter.e;
+        List<Encounter> encounters = findAll();
+        Encounter encounter = encounters.get(encounterId);
+        return encounter != null;
     }
 
     @Override
