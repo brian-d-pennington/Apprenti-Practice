@@ -1,2 +1,7 @@
-Encounter does not exist
-[learn.unexplained.models.Encounter@b4393a7a, learn.unexplained.models.Encounter@5f55ffcd, learn.unexplained.models.Encounter@5f55ffcd, learn.unexplained.models.Encounter@367e1aa, learn.unexplained.models.Encounter@5f8e5dd1]
+encounter_id,type,when,description,occurrences
+1,UFO,2020-01-01,short test #1,1
+2,CREATURE,2020-02-01,short test #2,1
+3,SOUND,2020-03-01,short test #3,1
+4,VISION,2022-03-02,bright af,2
+5,UFO,1980-02-29,very green,1
+6,SOUND,2022-02-01,louuuuuud,1

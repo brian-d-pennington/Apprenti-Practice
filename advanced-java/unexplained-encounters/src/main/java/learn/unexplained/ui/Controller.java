@@ -84,7 +84,9 @@ public class Controller {
         List<Encounter> encounters = service.findAll();
         if (!encounters.isEmpty()) {
             Encounter encounter = chooseEncounter(encounters);
+            int id = encounter.getEncounterId();
             service.deleteById(encounter.getEncounterId());
+            System.out.println("Encounter " +id+ " deleted.");
         } else {
             System.out.println("There are no Encounters to delete.");
         }
