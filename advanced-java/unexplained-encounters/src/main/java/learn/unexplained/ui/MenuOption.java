@@ -3,7 +3,10 @@ package learn.unexplained.ui;
 public enum MenuOption {
     EXIT("Exit"),
     DISPLAY_ALL("Display All Encounters"),
-    ADD("Add An Encounter");
+    FIND_BY_TYPE("Find Encounter By Type"),
+    ADD("Add An Encounter"),
+    UPDATE("Update An Encounter"),
+    DELETE("Delete An Encounter");
 
     private String message;
 

@@ -22,8 +22,8 @@ public class EncounterService {
 
     // ADDED METHODS: findByType, update, delete
 
-    public List<Encounter> findByType() throws DataAccessException {
-        return repository.findByType("UFO");
+    public List<Encounter> findByType(String type) throws DataAccessException {
+        return repository.findByType(type);
     }
 
     public Encounter update(Encounter encounter) throws DataAccessException {

@@ -42,7 +42,7 @@ public class EncounterFileRepository implements EncounterRepository {
             for (Encounter e : all) {
                 if (e.getEncounterId() == encounter.getEncounterId()) {
                     all.set(e.getEncounterId(), encounter);
-                    writer.println("File updated");
+                    writer.println(all);
                     return true;
                 } else {
                     writer.println("Encounter does not exist");

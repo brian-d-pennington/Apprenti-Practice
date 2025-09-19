@@ -40,6 +40,16 @@ public class Controller {
                 case ADD:
                     addEncounter();
                     break;
+                case FIND_BY_TYPE:
+                    String type = displayEncounterTypes();
+                    findEncounterByType(type);
+                    break;
+                case UPDATE:
+                    updateEncounter();
+                    break;
+                case DELETE:
+                    deleteEncounter();
+                    break;
             }
         } while (option != MenuOption.EXIT);
     }
@@ -47,6 +57,53 @@ public class Controller {
     private void displayAllEncounters() throws DataAccessException {
         List<Encounter> encounters = service.findAll();
         view.printAllEncounters(encounters);
+    }
+
+    // added methods: displayEncounterTypes, findEncounterByType, update, and delete
+
+    private String displayEncounterTypes() throws DataAccessException {
+        return view.readType().toString();
+    }
+
+    private void findEncounterByType(String type) throws DataAccessException {
+        List<Encounter> encounters = service.findByType(type);
+        view.printAllEncounters(encounters);
+    }
+
+    private void updateEncounter() throws DataAccessException {
+        List<Encounter> encounters = service.findAll();
+        if (!encounters.isEmpty()) {
+            Encounter encounter = chooseEncounter(encounters);
+            service.update(encounter);
+        } else {
+            System.out.println("There are no Encounters to update.");
+        }
+    }
+
+    private void deleteEncounter() throws DataAccessException {
+        List<Encounter> encounters = service.findAll();
+        if (!encounters.isEmpty()) {
+            Encounter encounter = chooseEncounter(encounters);
+            service.deleteById(encounter.getEncounterId());
+        } else {
+            System.out.println("There are no Encounters to delete.");
+        }
+    }
+
+    public Encounter chooseEncounter(List<Encounter> encounters){
+        view.printAllEncounters(encounters);
+        Encounter result = null;
+        if(!encounters.isEmpty()) {
+            int max = encounters.size()+1;
+            int encounterId = view.readInt("Choose an Encounter to modify: ", 1, max);
+            for (Encounter encounter : encounters){
+                if(encounter.getEncounterId() == encounterId){
+                    result = encounter;
+                    break;
+                }
+            }
+        }
+        return result;
     }
 
     private void addEncounter() throws DataAccessException {
