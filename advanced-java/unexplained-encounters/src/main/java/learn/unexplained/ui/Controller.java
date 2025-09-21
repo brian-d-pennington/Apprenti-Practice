@@ -97,7 +97,7 @@ public class Controller {
         Encounter result = null;
         if(!encounters.isEmpty()) {
             int max = encounters.size()+1;
-            int encounterId = view.readInt("Choose an Encounter to modify: ", 1, max);
+            int encounterId = view.readInt("Choose an Encounter to Update or Delete: ", 1, max);
             for (Encounter encounter : encounters){
                 if(encounter.getEncounterId() == encounterId){
                     result = encounter;

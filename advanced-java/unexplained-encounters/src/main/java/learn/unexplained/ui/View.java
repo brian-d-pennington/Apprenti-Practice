@@ -31,7 +31,7 @@ public class View {
     }
 
     public void printAllEncounters(List<Encounter> encounters) {
-        printHeader(MenuOption.DISPLAY_ALL.getMessage());
+        printHeader("All Encounters");
         if (encounters == null || encounters.size() == 0) {
             System.out.println();
             System.out.println("No encounters found.");

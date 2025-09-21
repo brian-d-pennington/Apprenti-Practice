@@ -46,7 +46,7 @@ public class EncounterService {
 
     public EncounterResult deleteById(int encounterId) throws DataAccessException {
         EncounterResult result = new EncounterResult();
-        Encounter encounterToDelete = repository.findAll().get(encounterId);
+        Encounter encounterToDelete = repository.findAll().get(encounterId-1);
 
         if (!repository.deleteById(encounterId)) {
             result.addErrorMessage("Encounter Id " + encounterId+ " was not found.");
