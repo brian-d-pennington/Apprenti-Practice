@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Exercise04 {
 
@@ -7,38 +8,37 @@ public class Exercise04 {
     // Complete the numbered tasks below.
     // Open and execute the accompanying tests to confirm your solution is correct.
 
-    // 1. add a, b, and c together and return the result
+    // 1. Add a, b, and c together and return the result
     BigDecimal add(BigDecimal a, BigDecimal b, BigDecimal c) {
-        return null;
+        return a.add(b).add(c);
     }
 
-    // 2. divide a by b and return the result with only two decimal points
+    // 2. Divide a by b and return the result with only two decimal points
     BigDecimal divideWithTwoDecimalPlaces(BigDecimal a, BigDecimal b) {
-        return null;
+        return a.divide(b, 2, RoundingMode.HALF_UP);
     }
 
-    // 3. calculate the sum of elements in values and return it
-    // with a scale of 4.
+    // 3. Calculate the sum of elements in values and return it with a scale of 4
     BigDecimal sum(BigDecimal[] values) {
-        return null;
+        BigDecimal sum = BigDecimal.ZERO;
+        for (BigDecimal value : values) {
+            sum = sum.add(value);
+        }
+        return sum.setScale(4, RoundingMode.HALF_UP);
     }
 
-    // 4. calculate the average of elements in values
+    // 4. Calculate the average of elements in values
     BigDecimal average(BigDecimal[] values) {
-        return null;
+        if (values == null || values.length == 0) {
+            return BigDecimal.ZERO;
+        }
+        BigDecimal sum = sum(values);
+        return sum.divide(BigDecimal.valueOf(values.length), 4, RoundingMode.HALF_UP);
     }
 
-    /**
-     * 5. complete the calculateInterest method using the spec below.
-     * Calculates the total interest earned on an investment.
-     * Does *not* calculate the final balance, just the interest over and above the initial investment.
-     *
-     * @param investment   the starting balance
-     * @param interestRate the interest rate expressed as a decimal (not a %-age).
-     * @param periods      number of periods in which to apply the interest
-     * @return total interest earned (final balance - initial investment)
-     */
+    // 5. Calculate total interest earned on an investment
     BigDecimal calculateInterest(BigDecimal investment, BigDecimal interestRate, int periods) {
-        return null;
+        BigDecimal total = investment.multiply(BigDecimal.ONE.add(interestRate).pow(periods));
+        return total.subtract(investment);
     }
 }
