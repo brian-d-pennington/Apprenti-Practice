@@ -36,22 +36,37 @@ public class EncounterFileRepository implements EncounterRepository {
     }
 
     @Override
-    public boolean update(Encounter encounter) throws DataAccessException{
+    public boolean update(Encounter encounter) throws DataAccessException {
         List<Encounter> all = findAll();
-        try (PrintWriter writer = new PrintWriter(filePath)) {
-            for (Encounter e : all) {
-                if (e.getEncounterId() == encounter.getEncounterId()) {
-                    all.set(e.getEncounterId(), encounter);
-                    writer.println("File updated");
-                    return true;
-                } else {
-                    writer.println("Encounter does not exist");
-                }
+        boolean found = false;
+
+        for (int i = 0; i < all.size(); i++) {
+            if (all.get(i).getEncounterId() == encounter.getEncounterId()) {
+                int updateOccurrences = all.get(i).getOccurrences();
+                updateOccurrences+=1;
+                all.get(i).setOccurrences(updateOccurrences); // Update increments Occurrences by 1
+                System.out.println("Occurrences of " +all.get(i).getDescription() + " " +all.get(i).getType() + " encounter incremented by 1.");
+                all.set(i, encounter);
+                found = true;
+                break;
             }
-        } catch (IOException e){
+        }
+
+        if (!found) {
+            System.out.println("Could not find Encounter to update.");
+            return false;
+        }
+
+        try (PrintWriter writer = new PrintWriter(filePath)) {
+            // rebuild CSV file
+            writer.println("encounter_id,type,when,description,occurrences");
+            for (Encounter e : all) {
+                writer.println(serialize(e));
+            }
+            return true;
+        } catch (IOException e) {
             throw new DataAccessException("Could not update file", e);
         }
-        return false;
     }
 
     @Override

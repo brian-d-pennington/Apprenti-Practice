@@ -31,7 +31,7 @@ public class View {
     }
 
     public void printAllEncounters(List<Encounter> encounters) {
-        printHeader(MenuOption.DISPLAY_ALL.getMessage());
+        printHeader("All Encounters");
         if (encounters == null || encounters.size() == 0) {
             System.out.println();
             System.out.println("No encounters found.");
@@ -70,7 +70,7 @@ public class View {
         return encounter;
     }
 
-    private String readString(String message) {
+    public String readString(String message) {
         System.out.print(message);
         return console.nextLine();
     }
@@ -103,7 +103,7 @@ public class View {
         return result;
     }
 
-    private int readInt(String message, int min, int max) {
+    public int readInt(String message, int min, int max) {
         int result;
         do {
             result = readInt(message);
@@ -114,7 +114,7 @@ public class View {
         return result;
     }
 
-    private EncounterType readType() {
+    public EncounterType readType() {
         int index = 1;
         for (EncounterType type : EncounterType.values()) {
             System.out.printf("%s. %s%n", index++, type);
