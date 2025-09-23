@@ -5,7 +5,17 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--Define "beans" here.-->
+    <bean id="encounterFileRepository" class="learn.unexplained.data.EncounterFileRepository">
+        <constructor-arg  value="./data/encounters.csv"/>
+    </bean>
 
+    <bean id="encounterService" class="learn.unexplained.domain.EncounterService">
+        <constructor-arg ref="encounterFileRepository"/>
+    </bean>
+
+    <bean id="encounterService" class="learn.unexplained.domain.EncounterService">
+        <constructor-arg ref="encounterFileRepository"/>
+    </bean>
 
 
 </beans>
