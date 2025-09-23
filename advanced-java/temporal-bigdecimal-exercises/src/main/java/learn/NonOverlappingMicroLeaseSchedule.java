@@ -1,5 +1,6 @@
 package learn;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -7,25 +8,36 @@ import java.util.ArrayList;
  */
 public class NonOverlappingMicroLeaseSchedule {
 
-    // on success, a MicroLease is stored in leases
     private ArrayList<MicroLease> leases = new ArrayList<>();
 
-    // 1. Complete the add method.
-
-    /**
-     * Attempts to add a MicroLease to the Schedule.
-     * Rules:
-     * - if lease is null, return false
-     * - if lease.getStart or lease.getEnd is null, return false
-     * - if lease.getStart is later then lease.getEnd, return false
-     * - if the lease overlaps any other lease in leases, return false
-     * - otherwise, add to leases and return true
-     *
-     * @param lease - a MicroLease to be added to the schedule.
-     * @return true if MicroLease is valid (see rules)
-     * false if not valid
-     */
     public boolean add(MicroLease lease) {
-        return false;
+        if (lease == null) {
+            return false;
+        }
+
+        LocalDateTime start = lease.getStart();
+        LocalDateTime end = lease.getEnd();
+
+        if (start == null || end == null) {
+            return false;
+        }
+
+        // Check if start is later than end
+        if (start.isAfter(end)) {
+            return false;
+        }
+
+        // Check for overlap with any existing lease
+        for (MicroLease existingLease : leases) {
+            LocalDateTime existingStart = existingLease.getStart();
+            LocalDateTime existingEnd = existingLease.getEnd();
+            if (start.isBefore(existingEnd) && end.isAfter(existingStart)) {
+                return false;
+            }
+        }
+
+        // Add lease to the list if all checks pass
+        leases.add(lease);
+        return true;
     }
 }

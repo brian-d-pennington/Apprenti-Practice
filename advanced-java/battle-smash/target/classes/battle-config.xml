@@ -36,7 +36,7 @@
 <!--        <property name="announcer" ref="announcer"/>-->
 <!--    </bean>-->
 
-    <!--    ADDED SCENARIO (only 1 can be run at a time, why the others are commented out)-->
+    <!--    ADDED SCENARIO (only 1 can be run at a time, the others are commented out-->
     <!-- Announcer Bean -->
     <bean id="announcer" class="learn.battle.announcers.ProperAnnouncer"/>
 
