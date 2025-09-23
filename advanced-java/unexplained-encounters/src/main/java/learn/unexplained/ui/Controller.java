@@ -4,9 +4,13 @@ import learn.unexplained.data.DataAccessException;
 import learn.unexplained.domain.EncounterResult;
 import learn.unexplained.domain.EncounterService;
 import learn.unexplained.models.Encounter;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
+@PropertySource("classpath:data.properties")
 public class Controller {
 
     private final EncounterService service;

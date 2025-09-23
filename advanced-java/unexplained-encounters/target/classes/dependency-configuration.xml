@@ -14,7 +14,6 @@
     </bean>
 
     <bean id="view" class="learn.unexplained.ui.View">
-<!--        <constructor-arg ref="io"/>-->
     </bean>
 
     <bean class="learn.unexplained.ui.Controller">
