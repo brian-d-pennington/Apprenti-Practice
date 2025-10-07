@@ -28,21 +28,21 @@ SELECT POWER(6, 2);
 
 -- Select all the rows from the Building table.
 
+-- in the future, use:
+-- use SimpleSchool
+
 SELECT * 
 FROM SimpleSchool.Building;
 
 -- What are the period name, start, and end times?
 
 SELECT PeriodName, StartTime, EndTime
-FROM SimpleSchool.PeriodName;
+FROM SimpleSchool.Period;
 
 -- Which table is empty?
 
-SELECT table_name
-FROM information_schema.tables 
-WHERE table_schema = 'SimpleSchool' 
-    AND table_rows = 0 
-    AND table_type = 'BASE TABLE';
+SELECT * 
+FROM SimpleSchool.Grade;
 
 -- List all courses and credit hours in the format: CourseName (CreditHours)
 
@@ -54,4 +54,47 @@ FROM SimpleSchool.CourseHours;
 SELECT FirstName, LEFT(LastName, 1)
 FROM SimpleSchool.Teacher
 LIMIT 5;
+
+-- How many rooms are there?
+
+SELECT COUNT(DISTINCT(roomID)) 
+FROM SimpleSchool.Room;
+
+-- RoomNumber is an integer type. What is the range of room numbers? (Hint:Consider BuildingID too.)
+
+SELECT MIN(roomNumber) AS Start, MAX(roomNumber) AS End
+BuildingId FROM SimpleSchool.Room GROUP BY BuildingId;
+
+-- Examine the Description field of the Room table. What are your observations ofthe description field?
+
+SELECT Description 
+FROM SimpleSchool.Room;
+
+-- How many unique SubjectIDs appear in the Course table?
+
+SELECT DISTINCT(subjectId)
+AS SubjectId 
+FROM SimpleSchool.Course;
+
+-- How many grade types are there?
+
+SELECT COUNT(DISTINCT(gradeTypeID)
+FROM SimpleSchool.GradeType;
+
+-- What are the IDs and Names of the grade types? (Hint: Name the columnsappropriately in the ResultSet)
+
+SELECT gradeTypeId AS Id, gradeTypeName AS name
+FROM SimpleSchool.GradeType;
+
+-- What grade types appear in the GradeItem table?
+
+SELECT gradeTypeName 
+FROM SimpleSchool.GradeType 
+WHERE gradeTypeId IN (SELECT gradeTypeId FROM gradeItem);
+
+-- What grade types are not utilized in the GradeItem table? (Hint: You can't  You have to utilize the pre
+
+SELECT gradeTypeName 
+FROM SimpleSchool.GradeType 
+WHERE gradeTypeId NOT IN (SELECT gradeTypeId FROM gradeItem);
 
