@@ -47,7 +47,7 @@ FROM SimpleSchool.Grade;
 -- List all courses and credit hours in the format: CourseName (CreditHours)
 
 SELECT CONCAT(CourseName, ' (', CreditHours, ')')
-FROM SimpleSchool.CourseHours;
+FROM SimpleSchool.Course;
 
 -- What are the teachers' full names (first names and last initials) for the first five teachers?
 
