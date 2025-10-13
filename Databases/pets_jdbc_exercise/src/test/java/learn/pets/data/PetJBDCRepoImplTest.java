@@ -28,6 +28,13 @@ class PetJBDCRepoImplTest {
     }
 
     @Test
+    void testFindByName_NullName() {
+        Pet actual = repository.findByName(null);
+        System.out.println("Find pet by null name: " + actual);
+        assertNull(actual, "Should return null when searching with null name");
+    }
+
+    @Test
     void testFindByID() {
         int id = repository.findAll().getFirst().getPetId();
         Pet pet = repository.findById(id);
@@ -35,6 +42,14 @@ class PetJBDCRepoImplTest {
         assertNotNull(pet);
         assertEquals("Buddy", pet.getName());
         assertEquals("Dog", pet.getType());
+    }
+
+    @Test
+    void testFindByID_InvalidID() {
+        int invalidId = 0;
+        Pet pet = repository.findById(invalidId);
+        System.out.println("Find Pet by invalid ID: " + pet);
+        assertNull(pet, "Should return null for invalid ID");
     }
 
     @Test
@@ -51,6 +66,13 @@ class PetJBDCRepoImplTest {
     }
 
     @Test
+    void shouldNotAddPet_WhenPetIsNull() {
+        assertThrows(Exception.class, () -> {
+            repository.add(null);
+        }, "Should throw exception when adding null pet");
+    }
+
+    @Test
     void shouldUpdatePet() {
         Pet pet = repository.findAll().getFirst();
         String originalName = pet.getName(); // to reset after test
@@ -63,6 +85,13 @@ class PetJBDCRepoImplTest {
     }
 
     @Test
+    void shouldNotUpdatePet_WhenPetIsNull() {
+        assertThrows(Exception.class, () -> {
+            repository.update(null);
+        }, "Should throw exception when updating null pet");
+    }
+
+    @Test
     void shouldDeletePet() {
         Pet pet = new Pet();
         pet.setName("Temp Pet");
@@ -70,5 +99,13 @@ class PetJBDCRepoImplTest {
         repository.add(pet);
         System.out.println("Pet to Delete: " + pet);
         assertTrue(repository.delete(pet.getPetId()));
+    }
+
+    @Test
+    void shouldNotDeletePet_WithInvalidID() {
+        int invalidId = 0;
+        boolean result = repository.delete(invalidId);
+        System.out.println("Delete pet with invalid ID result: " + result);
+        assertFalse(result, "Should return false when deleting with invalid ID");
     }
 }
