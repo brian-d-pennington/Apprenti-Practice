@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Contact Form</title>
+</head>
+<body>
+    <form action="/submit-form" method="post">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+        </div>
+        
+        <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Enter your message here" required></textarea>
+        </div>
+        
+        <button type="submit">Send Message</button>
+    </form>
+</body>
+</html>
+
+<!-- Reflection Questions
+● Why is using the label element important for accessibility?
+
+They are required for forms to be detected on screen readers.
+
+● What is the difference between id and name attributes in form elements?
+
+the ID is used to identify the element in html and css, while the name is what is
+seen upon data submission.
+
+● Why should required attributes be used on key form fields? 
+
+-->
