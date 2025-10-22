@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Product Inventory Table</title>
+</head>
+<body>
+    <table>
+        <caption>Product Inventory Overview</caption>
+        
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock Status</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr>
+                <td>Laptop Pro 15</td>
+                <td rowspan="2">Electronics</td>
+                <td>$1,299.99</td>
+                <td>In Stock</td>
+            </tr>
+            <tr>
+                <td>Wireless Mouse</td>
+                <!-- Category cell merged with row above -->
+                <td>$29.99</td>
+                <td>In Stock</td>
+            </tr>
+            <tr>
+                <td>Office Chair</td>
+                <td>Furniture</td>
+                <td>$249.99</td>
+                <td>Low Stock</td>
+            </tr>
+            <tr>
+                <td>Desk Lamp</td>
+                <td>Lighting</td>
+                <td>$45.99</td>
+                <td>Out of Stock</td>
+            </tr>
+        </tbody>
+        
+        <tfoot>
+            <tr>
+                <td colspan="4">Total Products: 4</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
