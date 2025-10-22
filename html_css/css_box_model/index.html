@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>CSS Display Properties Demo</title>
+</head>
+<body>
+    <!-- Task 1: Understanding Display Types -->
+    <h1>CSS Blocks Exercise</h1>
+
+    <section>
+        <h2>Block-Level Element</h2>
+        <p>Takes up entire width of screen.</p>
+        
+        <div class="block-container">
+            <h3>This is a Block-Level Container</h3>
+            <p>This div is a block-level element with:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Background color: <code>#3498db</code></li>
+                <li>Padding: <code>20px</code></li>
+                <li>Border: <code>3px solid #2980b9</code></li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>Inline Elements</h2>
+        <p>Inline elements auto adjust and wrap.</p>
+        
+        <p>
+            Here's an 
+            <span class="inline-demo">inline element</span>
+            in a paragraph. Notice how it 
+            <span class="inline-demo">flows within the text</span>
+            without creating new lines. Multiple inline elements 
+            <span class="inline-demo">appear next to each other</span>
+            on the same line.
+        </p>
+    </section>
+
+    <section>
+        <h2>Inline Element Converted to Block</h2>
+        <p>When we change <code>display: inline</code> to <code>display: block</code>, the element now behaves like a block element.</p>
+        
+        <div class="inline-to-block">
+            ✅ This was originally an inline element, but now displays as a block!
+        </div>
+        <p>Notice how the element above:</p>
+        <ul style="margin-left: 20px;">
+            <li>Takes up the full width available</li>
+            <li>Starts on a new line</li>
+            <li>Respects top and bottom margins</li>
+            <li>Respects left and right margins</li>
+            <li>Allows full padding control</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Inline-Block Elements</h2>
+        <p>Inline-block elements combine properties of both inline and block elements.</p>
+                
+        <div>
+            <span class="inline-block-demo">Button 1</span>
+            <span class="inline-block-demo">Button 2</span>
+            <span class="inline-block-demo">Button 3</span>
+            <span class="inline-block-demo">Button 4</span>
+        </div>
+
+        <p style="margin-top: 20px;">Inline-block elements:</p>
+        <ul style="margin-left: 20px;">
+            <li>Flow inline like text but respect width, height, and margins</li>
+            <li>Take up only as much width as needed (like inline)</li>
+            <li>Respect width, height, and vertical margins (like block)</li>
+            <li>Perfect for creating horizontal navigation bars or button groups</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Flex Container with Multiple Items</h2>
+        <p>Using <code>display: flex</code> creates a flexible container that can align and distribute items efficiently.</p>
+        
+        <div class="flex-container">
+            <div class="flex-item">
+                📦<br>Item 1
+            </div>
+            <div class="flex-item">
+                📦<br>Item 2
+            </div>
+            <div class="flex-item">
+                📦<br>Item 3
+            </div>
+            <div class="flex-item">
+                📦<br>Item 4
+            </div>
+        </div>
+
+        <p style="margin-top: 20px;">Flex container benefits:</p>
+        <ul style="margin-left: 20px;">
+            <li>Automatic space distribution</li>
+            <li>Easy alignment of items</li>
+            <li>Responsive design without media queries</li>
+            <li>Can wrap items on smaller screens</li>
+        </ul>
+    </section>
+    <!-- Task 2: Experimenting with Margins, Borders, and Padding -->
+    <section>
+        <h2>CSS Box Model Deep Dive</h2>
+        <p>The CSS box includes margin, border, padding, and content.</p>
+
+        <div class="highlight-info">
+            1. <strong style="color: #27ae60;">Content</strong> - The actual content (text, images, etc.)<br>
+            2. <strong style="color: #f39c12;">Padding</strong> - Space inside the border, around the content<br>
+            3. <strong style="color: #e74c3c;">Border</strong> - A line around the padding<br>
+            4. <strong style="color: #3498db;">Margin</strong> - Space outside the border (doesn't count toward element width)
+        </div>
+
+        <div class="box-model-diagram">
+            <h3 style="color: #2c3e50; margin-bottom: 20px;">Visual Box Model</h3>
+            <div class="box-model-visual">
+                <div class="margin-layer box-layer">
+                    <span class="box-model-label margin-label">MARGIN: 10px</span>
+                    <div class="border-layer box-layer">
+                        <span class="box-model-label border-label">BORDER: 5px</span>
+                        <div class="padding-layer box-layer">
+                            <span class="box-model-label padding-label">PADDING: 20px</span>
+                            <div class="content-layer box-layer">
+                                <span class="box-model-label content-label">CONTENT: 200px</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="color: #2c3e50; margin-top: 30px;">🧮 Calculations</h3>
+
+        <h4 style="color: #34495e; margin-top: 15px;">Given:</h4>
+        <div class="calculation-box">
+            Width: 200px<br>
+            Height: 100px<br>
+            Padding: 20px<br>
+            Border: 5px solid<br>
+            Margin: 10px<br>
+            Background: #ecf0f1
+        </div>
+
+        <h4 style="color: #34495e; margin-top: 15px;">Calculation with box-sizing: content-box (DEFAULT)</h4>
+        <div class="calculation-box content-box-calc">
+            Total Element Width = Content + Padding (Left + Right) + Border (Left + Right)<br>
+            <br>
+            Content Width: 200px<br>
+            + Padding Left: 20px<br>
+            + Padding Right: 20px<br>
+            + Border Left: 5px<br>
+            + Border Right: 5px<br>
+            ─────────────────────<br>
+            <span class="calculation-result">Total Width: 250px ✅</span>
+            <br><br>
+            Note: Margin (10px) is NOT added to the element's width.<br>
+            However, it adds spacing around the element on the page.<br>
+            <br>
+            Space taken on page = 250px + 10px (left margin) + 10px (right margin) = 270px
+        </div>
+
+        <h4 style="color: #34495e; margin-top: 15px;">Calculation with box-sizing: border-box</h4>
+        <div class="calculation-box border-box-calc">
+            Total Element Width = Specified Width (INCLUDES content, padding, and border)<br>
+            <br>
+            Specified Width: 200px (total)<br>
+            ─────────────────────<br>
+            <span class="calculation-result">Total Width: 200px ✅</span>
+            <br><br>
+            The 200px includes:<br>
+            • Content: 150px<br>
+            • Padding: 20px (left) + 20px (right) = 40px<br>
+            • Border: 5px (left) + 5px (right) = 10px<br>
+            <br>
+            Note: Margin (10px) still adds spacing around the element.<br>
+            <br>
+            Space taken on page = 200px + 10px (left margin) + 10px (right margin) = 220px
+        </div>
+    </section>
+    <!-- Task 3: Investigating Box-Sizing -->
+    <section>
+        <h1>📦 Box-Sizing: content-box vs border-box</h1>
+        
+        <div class="comparison">
+            <div class="box-wrapper">
+                <h2>🔴 content-box (Default)</h2>
+                <div class="box content-box">
+                    This box uses box-sizing: content-box
+                </div>
+                <div class="info">
+                    <p><strong>CSS Applied:</strong></p>
+                    <p>width: 300px</p>
+                    <p>padding: 30px (all sides)</p>
+                    <p>border: 10px solid (all sides)</p>
+                    
+                    <div class="calculation">
+                        <p><strong>Total Width Calculation:</strong></p>
+                        <p>300px (width)</p>
+                        <p>+ 30px (padding-left)</p>
+                        <p>+ 30px (padding-right)</p>
+                        <p>+ 10px (border-left)</p>
+                        <p>+ 10px (border-right)</p>
+                        <p>= <strong>380px total</strong></p>
+                    </div>
+                    
+                    <p style="margin-top: 15px;"><strong>Note:</strong> Width applies only to the content area. Padding and border are added on top.</p>
+                </div>
+            </div>
+
+            <div class="box-wrapper">
+                <h2>🟢 border-box</h2>
+                <div class="box border-box">
+                    This box uses box-sizing: border-box
+                </div>
+                <div class="info">
+                    <p><strong>CSS Applied:</strong></p>
+                    <p>width: 300px</p>
+                    <p>padding: 30px (all sides)</p>
+                    <p>border: 10px solid (all sides)</p>
+                    
+                    <div class="calculation">
+                        <p><strong>Total Width Calculation:</strong></p>
+                        <p>300px (width)</p>
+                        <p>= <strong>300px total</strong></p>
+                        <p style="margin-top: 10px; color: #666;">
+                            (Padding and border are included within the 300px)
+                        </p>
+                        <p style="margin-top: 10px;">
+                            Content area: 300px - 60px (padding) - 20px (border) = <strong>220px</strong>
+                        </p>
+                    </div>
+                    
+                    <p style="margin-top: 15px;"><strong>Note:</strong> Width includes content, padding, and border.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- Task 4: Advanced Layout with Nested Boxes & Margin -->
+    <section>
+        <div class="section">
+            <h2>Nested Boxes with Complex Layouts</h2>
+            
+            <div class="nested-demo">
+                <div>
+                    <h3>Three-Level Nesting</h3>
+                    <div class="grandparent">
+                        <div class="grandparent-label">👴 GRANDPARENT (Blue)</div>
+                        <p style="color: white; margin: 0 0 10px 0;">margin: 20px | padding: 20px | border: 5px</p>
+                        
+                        <div class="parent">
+                            <div class="parent-label">👨 PARENT (Red)</div>
+                            <p style="color: white; margin: 0 0 10px 0;">margin: 15px | padding: 20px | border: 5px</p>
+                            
+                            <div class="child">
+                                <div class="child-label">👶 CHILD (Green)</div>
+                                <p style="margin: 0;">margin: 10px | padding: 15px | border: 5px</p>
+                                <p style="margin: 10px 0 0 0; font-size: 14px;">Content goes here!</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="box-info">
+                        <strong>Observations:</strong><br>
+                        • Each nested level adds its own margin, padding, and border<br>
+                        • Total space = sum of all ancestors' properties<br>
+                        • Background colors show distinct layers<br>
+                        • Child margins create space INSIDE parent's padding
+                    </div>
+            </div>
+    </section>
+    <section>
+        <div class="section">
+            <h2>🔄 Part 2: Margin Collapsing Exploration</h2>
+            <p>Vertical margins between block elements can collapse, taking the larger of the two margins rather than adding them together.</p>
+
+            <div class="collapse-demo">
+                <div class="example-box">
+                    <h3>Example 1: Adjacent Siblings (COLLAPSE ✓)</h3>
+                    <div class="sibling1">
+                        <strong>Box 1</strong><br>
+                        margin-bottom: 30px
+                    </div>
+                    <div class="sibling2">
+                        <strong>Box 2</strong><br>
+                        margin-top: 50px<br>
+                        margin-bottom: 40px
+                    </div>
+                    <div class="sibling3">
+                        <strong>Box 3</strong><br>
+                        margin-top: 20px
+                    </div>
+                    
+                    <div class="measurement">
+                        <strong>Actual Spacing:</strong><br>
+                        • Box 1 ↔ Box 2: 50px (larger of 30px and 50px)<br>
+                        • Box 2 ↔ Box 3: 40px (larger of 40px and 20px)<br>
+                        NOT 30px + 50px = 80px
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h3>Example 2: Parent-Child (COLLAPSE ✓)</h3>
+                    <div class="parent-collapse">
+                        <div class="child-collapse">
+                            <strong>Child Element</strong><br>
+                            margin-top: 40px<br>
+                            margin-bottom: 40px
+                        </div>
+                    </div>
+                    
+                    <div class="measurement">
+                        <strong>Issue:</strong><br>
+                        • Child's margin-top "escapes" parent (red)<br>
+                        • Child's margin-bottom also escapes<br>
+                        • Parent has NO padding or border to contain it<br>
+                        • This creates unexpected spacing!
+                    </div>
+                    
+                    <div class="warning">
+                        ⚠️ <strong>Problem:</strong> The child's margins collapse through the parent because the parent has no padding or border to stop it!
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h3>Example 3: Parent with Padding (NO COLLAPSE ✗)</h3>
+                    <div class="parent-no-collapse">
+                        <div class="child-no-collapse">
+                            <strong>Child Element</strong><br>
+                            margin-top: 40px<br>
+                            margin-bottom: 40px
+                        </div>
+                    </div>
+                    
+                    <div class="measurement">
+                        <strong>Fix Applied:</strong><br>
+                        • Parent has padding: 1px<br>
+                        • Child's margins now stay INSIDE parent<br>
+                        • Proper containment achieved!<br>
+                        • Even 1px padding prevents collapse
+                    </div>
+                    
+                    <div class="highlight">
+                        ✅ <strong>Solution:</strong> Adding any padding to parent prevents margin collapse!
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h3>Example 4: Parent with Border (NO COLLAPSE ✗)</h3>
+                    <div class="parent-border">
+                        <div class="child-border">
+                            <strong>Child Element</strong><br>
+                            margin-top: 40px<br>
+                            margin-bottom: 40px
+                        </div>
+                    </div>
+                    
+                    <div class="measurement">
+                        <strong>Alternative Fix:</strong><br>
+                        • Parent has border: 5px solid<br>
+                        • Border acts as barrier<br>
+                        • Margins contained within parent<br>
+                        • No collapse occurs
+                    </div>
+                    
+                    <div class="highlight">
+                        ✅ <strong>Solution:</strong> Adding a border also prevents margin collapse!
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h3>Example 5: Empty Element (SELF-COLLAPSE ✓)</h3>
+                    <div style="background-color: #3498db; padding: 10px; color: white;">Before Empty Element</div>
+                    <div class="empty-margin"></div>
+                    <div style="background-color: #2ecc71; padding: 10px; color: white;">After Empty Element</div>
+                    
+                    <div class="measurement">
+                        <strong>Special Case:</strong><br>
+                        • Empty element: height: 0<br>
+                        • margin-top: 40px, margin-bottom: 40px<br>
+                        • Its own margins collapse into single 40px<br>
+                        • Then that collapses with adjacent margins!
+                    </div>
+                </div>
+
+                <div class="example-box">
+                    <h3>Example 6: display: inline-block (NO COLLAPSE ✗)</h3>
+                    <div class="no-collapse-inline">
+                        <strong>Inline-block Element</strong><br>
+                        margin-top: 30px<br>
+                        margin-bottom: 30px
+                    </div>
+                    <div class="no-collapse-inline">
+                        <strong>Another Inline-block</strong><br>
+                        margin-top: 30px<br>
+                        margin-bottom: 30px
+                    </div>
+                    
+                    <div class="measurement">
+                        <strong>No Collapse:</strong><br>
+                        • display: inline-block prevents collapse<br>
+                        • Space between = 30px + 30px = 60px<br>
+                        • Other values that prevent collapse:<br>
+                        &nbsp;&nbsp;- float: left/right<br>
+                        &nbsp;&nbsp;- position: absolute/fixed<br>
+                        &nbsp;&nbsp;- display: flex/grid (on parent)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
