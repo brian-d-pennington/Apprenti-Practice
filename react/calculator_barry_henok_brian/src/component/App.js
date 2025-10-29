@@ -11,11 +11,12 @@ export default class App extends React.Component {
     operation: null,
   };
 
-  handleClick = buttonName => {
+  handleClick = (buttonName) => {
     this.setState(calculate(this.state, buttonName));
   };
 
   render() {
+    console.log("whats up ");
     return (
       <div className="component-app">
         <Display value={this.state.next || this.state.total || "0"} />
