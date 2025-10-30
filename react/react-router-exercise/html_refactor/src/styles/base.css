@@ -1,0 +1,211 @@
+/* Styles shared by all pages, and page-specific styling goes in its respective css */
+
+:root {
+    /* --- Primary Tones --- */
+    --color-primary-green: #5ba74a; /* Use for main accents, primary buttons, call-to-actions, and key highlights */
+    --color-deep-green: #1e4a22; /* Use for headings, hover states, and text on light backgrounds */
+    --color-light-green: #a7d97c; /* Use for secondary backgrounds, highlights, and subtle accents */
+  
+    /* --- Neutral & Supporting Tones --- */
+    --color-earth-brown: #6b4f36; /* Use for section backgrounds, secondary text, and natural dividers */
+    --color-soft-beige: #efe3cf; /* Use as a main page background or light contrast section */
+    --color-leaf-shadow: #4a4e42; /* Use for body text or dark neutral elements */
+    --color-white: #ffffff; /* Use for text on dark backgrounds, or as a clean neutral space */
+  
+    /* --- Contrast & Highlight Tones --- */
+    --color-sky-blue: #88bfe0; /* Use for links, highlights, hover states, or subtle UI accents */
+    --mobile: 430;
+    --tablet: 768;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1,
+  h2,
+  h3 {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  h2 {
+    margin: 20px 0;
+    font-size: 30px;
+  }
+  h3 {
+    margin: 16px;
+  }
+  p {
+    margin: 20px 0;
+  }
+  
+  body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.7;
+    font-size: 16px;
+    background-color: var(--color-soft-beige);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* App container for React */
+  .App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Header */
+  
+  header {
+    background-color: var(--color-deep-green);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+  }
+  
+  header a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  header nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  nav ul {
+    display: flex;
+    gap: 20px;
+    padding: 0;
+  }
+  
+  nav li {
+    list-style-type: none;
+  }
+  
+  /* Main */
+  
+  main {
+    flex-grow: 1;
+  }
+  
+  /* Footer */
+  
+  footer {
+    background-color: var(--color-earth-brown);
+    padding: 60px;
+  }
+  footer p {
+    text-align: center;
+    color: white;
+  }
+  
+  /* Page Content sections */
+  
+  .page-content {
+    margin: 60px 30px;
+  }
+  
+  .page-content > div {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .page-content h2 {
+    text-align: center;
+  }
+  
+  ul {
+    padding-left: 45px;
+  }
+  
+  /* -------------  Global link styles ------------- */
+  
+  p a,
+  p a:visited {
+    /* normal / visited links  */
+    color: #207a30; /* pick any brand color */
+    text-decoration: none; /* no underline */
+    transition: color 0.25s ease;
+  }
+  
+  p a:hover,
+  p a:focus {
+    /* mouse-over or keyboard focus */
+    text-decoration: underline;
+  }
+  
+  nav a {
+    position: relative;
+    padding-bottom: 4px; /* space for the animated line */
+  }
+  
+  nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0; /* start hidden */
+    height: 2px;
+    background: currentColor; /* uses the link's color */
+    transition: width 0.25s ease;
+  }
+  
+  nav a:hover::after,
+  nav a:focus::after {
+    width: 100%; /* slide in on hover/focus */
+  }
+  
+  /* Active navigation link styles for React Router */
+  nav a.active::after {
+    width: 100%;
+  }
+  
+  /* -------------  Responsive styles ------------- */
+  /* Tablet */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 30px;
+      text-align: center;
+    }
+    h2 {
+      font-size: 25px;
+    }
+    body {
+      font-size: 14px;
+    }
+    header {
+      flex-direction: column;
+      gap: 20px;
+    }
+    nav {
+      justify-content: center;
+      font-size: 16px;
+    }
+  }
+  /* Mobile */
+  @media (max-width: 430px) {
+    h1 {
+      font-size: 25px;
+    }
+    h2 {
+      font-size: 20px;
+    }
+    h3 {
+      font-size: 16px;
+      margin: 8px;
+    }
+    .page-content {
+      margin: 60px 20px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+  }

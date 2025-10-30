@@ -1,0 +1,7 @@
+/* About section */
+
+/* Two-column list for services */
+.services {
+    display: flex;
+    justify-content: space-around;
+  }
